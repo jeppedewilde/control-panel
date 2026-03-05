@@ -38,7 +38,7 @@ Tijdens het weekvoortgangsgesprek besprak ik mijn voortgang met Nils en mijn gro
 ## week 2
 
 ### woensdag 4 maart
-wat heb ik vandaag gedaan? -> Ik besloot vandaag om van idee te switchen en in plaats van mijn idee met de speelkaart een cockpit te bouwen. Na daar een begin voor te hebben gemaakt ging ik naar Nils voor feedback en die gaf aan dat hij mijn eerste idee eigenlijk beter vond. Toen ben ik terug geswitcht naar mijn eerste idee en heb ik een aantal vormen toegevoegd. Ik merk wel dat het heel veel werk is om alle vormen toe te voegen en te positioneren, dus ik ben wel een beetje bang dat ik in tijdsnood ga komen. Ik heb ook de workshop 3d gevolgd bij Sanne.
+wat heb ik vandaag gedaan? -> Ik besloot vandaag om van idee te switchen en in plaats van mijn idee met de speelkaart een cockpit te bouwen. Na daar een begin voor te hebben gemaakt ging ik naar Nils voor feedback en die gaf aan dat hij mijn eerste idee eigenlijk beter vond. Toen ben ik terug geswitcht naar mijn eerste idee en heb ik een aantal vormen toegevoegd. Ik merk wel dat het heel veel werk is om alle vormen toe te voegen en te positioneren, dus ik ben wel een beetje bang dat ik in tijdsnood ga komen. Ik heb ook de workshop 3d gevolgd bij Sanne. Ik had de checkout gedaan met Arvid.
 
 hoelang heb ik daarover gedaan? -> De workshop van Sanne duurde 1 uur, ik ben ongeveer 3 uur bezig geweest met het cockpit idee en na het wisselen naar de speelkaart heb ik daar ongeveer 2 uur aan gewerkt.
 
