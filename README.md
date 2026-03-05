@@ -48,13 +48,13 @@ wat ga ik de volgende keer doen? -> Morgen ga ik verder met de vormen toevoegen 
 
 
 ### donderdag 5 maart 
-wat heb ik vandaag gedaan? -> 
+wat heb ik vandaag gedaan? -> Vandaag ben ik verder gegaan met de konining op de speelkaart. Ik ben nog niet klaar maar wel een stuk verder gekomen en een duidelijker beeld in mijn hoofd van wat ik nog wil toevoegen. Ook heb ik nagedacht over hoe ik mijn control panel ga stijlen, ik denk dat ik iets wil doen met een 2e speelkaart waar de controls op staan. Voor mijn tweede theme wil ik een koning op de speelkaart in plaats van een konining. Daarnaast heb ik een workshop grid gevolgd bij Nils en heb ik met Nils en mijn groepje het voortgangsgesprek gehad. Tijdens de checkout heb ik dit alles besproken met ...
 
-hoelang heb ik daarover gedaan? -> 
+hoelang heb ik daarover gedaan? -> De workshop duurde een uur, het voortgangsgesprek 45min en de rest van de dag ben ik bezig geweest met mijn idee verder uitdenken en werken aan de speelkaart.
 
-wat heb ik geleerd? -> 
+wat heb ik geleerd? -> Ik heb vandaag niet heel veel nieuwe dingen geleerd omdat ik vooral bezig was met het positioneren van vormen.
 
-wat ga ik de volgende keer doen? -> 
+wat ga ik de volgende keer doen? -> Volgende week ga ik verder met de speelkaart en beginnen met mijn controls.
 
 
 ### weekvoortgang
