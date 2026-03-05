@@ -229,6 +229,16 @@ div[data-naam="nek"] {
 }
 
 /* JURK */
+/* div[data-naam="wrapper-jurk"] {
+    position: absolute;
+    top: 10%; left: 10%;
+    width: 500px; height: 500px;
+    filter: drop-shadow(-3px -3px 0 #000) 
+            drop-shadow(3px -3px 0 #000) 
+            drop-shadow(-3px 3px 0 #000) 
+            drop-shadow(3px 3px 0 #000);
+} */
+
 div[data-naam="jurk"] {
     position: absolute;
     width: 50%;
