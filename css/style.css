@@ -15,21 +15,33 @@
 /*******************/
 
 /* Kroon kleur */
-main:has(nav > label:nth-of-type(1) > input:checked) {
+main:has(nav label:nth-of-type(1) > input:checked) {
     --kroon-kleur: #cc00ff;
 }
 
 /* Vorm gezicht */
-main:has(nav > label:nth-of-type(2) > input:checked) {
+main:has(nav label:nth-of-type(2) > input:checked) {
     --gezicht-ronding: 50px 50px 40px 40px; 
 }
 
-main:has(nav > label:nth-of-type(3) > input:checked) {
+main:has(nav label:nth-of-type(3) > input:checked) {
     --gezicht-ronding: 20px; 
 }
 
-main:has(nav > label:nth-of-type(4) > input:checked) {
+main:has(nav label:nth-of-type(4) > input:checked) {
     --gezicht-ronding: 0px; 
+}
+
+main:has(nav label:nth-of-type(5) > input:checked) {
+    div[data-naam="bloem-bovenkant"] {
+        animation: windmolen 5s linear infinite;
+    }
+}
+
+@keyframes windmolen {
+    100% {
+        rotate: 360deg;
+    }
 }
 
 /*******************/
@@ -37,7 +49,7 @@ main:has(nav > label:nth-of-type(4) > input:checked) {
 /*******************/
 body {
     background-color: #9dc1aa;
-    gap: 50px;
+    margin: 0;
     padding: 50px;
     font-family: sans-serif;
 }
@@ -45,66 +57,52 @@ body {
 main {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     gap: 5em;
+    flex-wrap: wrap; 
 }
 
 /******************/
 /** CONTROL CARD **/
 /******************/
-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background: white;
-    width: 90vw;
-    max-width: 400px;
-    aspect-ratio: 2 / 3;
+nav[data-naam="control-kaart"] {
+    width: 400px;  /* Zelfde als de speelkaart! */
+    height: 600px; /* Zelfde als de speelkaart! */
     background-color: #fcfcfc;
     border: 12px solid black;
     border-radius: 20px;
     position: relative;
+    display: flex;
     justify-content: center;
     align-items: center;
+    transform-origin: top center;
+}
+
+/* HET BINNENSTE KADER VAN HET CONTROL PANEL */
+div[data-naam="control-canvas"] {
+    width: 320px;
+    height: 510px;
+    background-color: #f0f0f0; /* Iets lichter grijs voor leesbaarheid */
+    border: 8px solid black;
+    position: relative;
+    overflow: hidden;
+    
+    /* Layout voor de knoppen erin */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 30px;
+    box-sizing: border-box; 
 }
 
 /****************/
 /** QUEEN CARD **/
 /****************/
 
-div[data-naam="helft-boven"],
-div[data-naam="helft-onder"] {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    overflow: hidden; 
-}
-
-div[data-naam="helft-boven"] {
-    top: 0;
-}
-
-div[data-naam="helft-onder"] {
-    bottom: 0;
-    transform: rotate(180deg); /* Dit is de magische truc! */
-}
-
-div[data-naam="middellijn"] {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 8px; /* Zelfde dikte als je border */
-    background-color: black;
-    z-index: 50; /* Zorg dat de lijn overal bovenop ligt */
-    transform: translateY(-50%); /* Schuift hem exact naar het midden */
-}
-
-/* DE KAART */
+/* DE KAART (Heeft nu VASTE PIXELS!) */
 div[data-naam="kaart"] {
-    width: 90vw;
-    max-width: 400px;
-    aspect-ratio: 2 / 3;
+    width: 400px;  /* Vast formaat */
+    height: 600px; /* Vast formaat */
     background-color: #fcfcfc;
     border: 12px solid black;
     border-radius: 20px;
@@ -112,12 +110,13 @@ div[data-naam="kaart"] {
     display: flex;
     justify-content: center;
     align-items: center;
+    transform-origin: top center; /* Belangrijk voor het schalen later */
 }
 
 /* HET GRIJZE KADER */
 div[data-naam="canvas"] {
-    width: 80%;
-    height: 85%;
+    width: 320px;
+    height: 510px;
     background-color: #d3d3d3;
     border: 8px solid black;
     position: relative;
@@ -131,25 +130,25 @@ div[data-naam="canvas"] {
 /* HART GROOT */
 div[data-naam="hart-groot"] {
     background-color: var(--vorm-kleur);
-    aspect-ratio: 1;
+    width: 80px;
+    height: 80px;
     clip-path: shape(
-    from 50% 91%,
-    line to 90% 50%,
-    arc to 50% 9%  of 1%,
-    arc to 10% 50% of 1%
+        from 50% 91%,
+        line to 90% 50%,
+        arc to 50% 9%  of 1%,
+        arc to 10% 50% of 1%
     );
     position: absolute;
-    width: 25%;
-    top: 13%;   
-    left: 6%; 
+    top: 66px;   
+    left: -35px; 
 }
 
 /* DE KROON */
 div[data-naam="kroon"] {
-    width: 25%;
-    height: 24%;
-    top: 16%;
-    left: 37%;
+    width: 80px;
+    height: 61px;
+    top: 41px;
+    left: 118px;
     background-color: var(--kroon-kleur);
     border-bottom: 4px solid rgb(255, 208, 0);
     position: absolute;
@@ -162,22 +161,21 @@ div[data-naam="kroon"] {
 /* HAAR LINKS */
 div[data-naam="haar-links"] {
     position: absolute;
-    aspect-ratio: 1;
+    width: 64px;
+    height: 138px;
     clip-path: polygon(69% 17%, 100% 10%, 100% 81%, 87% 78%, 50% 88%, 47% 38%);
-    width: 20%;
-    height: 54%;
-    top: 34%;   
-    left: 21%;  
+    top: 87px;   
+    left: 67px;  
     background-color: var(--haar-kleur);
     transform: rotate(1deg);
 }
 
 /* HET HOOFD */
 div[data-naam="hoofd"] {
-    width: 22%;  
-    height: 44%; 
-    top: 36%;   
-    left: 37%;  
+    width: 70px;  
+    height: 112px; 
+    top: 92px;   
+    left: 118px;  
     background-color: var(--huid-kleur);
     border: 4px solid black;
     border-radius: var(--gezicht-ronding);
@@ -186,9 +184,7 @@ div[data-naam="hoofd"] {
     transition: all 0.3s ease;
 }
 
-/* ! tot hier gekomen met percentages top/heigt verdubbelen */
-
-/* HET OOG */
+/* HET OOG (Gepositioneerd in het hoofd) */
 div[data-naam="oog"] {
     display: block;
     width: 20px;
@@ -196,19 +192,20 @@ div[data-naam="oog"] {
     border-bottom: 3px solid black;
     border-radius: 50%;
     position: absolute;
-    top: 25%;  
-    right: 20%; 
+    top: 28px;  
+    right: 14px; 
 }
- /* WIMPERS: 1 t/m 4 */
+
+/* WIMPERS (Gepositioneerd in het hoofd) */
 div[data-naam="wimper1"] {
     z-index: 100;
     position: absolute;
     background-color: black;
     border-radius: 40%;
-    height: 7%;
-    width: 3%;
-    top: 35%;  
-    right: 42%;
+    height: 11px;
+    width: 2px;
+    top: 39px;  
+    right: 29px;
     transform: rotate(15deg); 
 }
 
@@ -217,10 +214,10 @@ div[data-naam="wimper2"] {
     position: absolute;
     background-color: black;
     border-radius: 40%;
-    height: 7%;
-    width: 3%;
-    top: 35%;  
-    right: 36%;
+    height: 11px;
+    width: 2px;
+    top: 39px;  
+    right: 25px;
     transform: rotate(9deg); 
 }
 
@@ -229,10 +226,10 @@ div[data-naam="wimper3"] {
     position: absolute;
     background-color: black;
     border-radius: 40%;
-    height: 7%;
-    width: 3%;
-    top: 35%;  
-    right: 29%;
+    height: 11px;
+    width: 2px;
+    top: 39px;  
+    right: 20px;
     transform: rotate(-5deg); 
 }
 
@@ -241,14 +238,14 @@ div[data-naam="wimper4"] {
     position: absolute;
     background-color: black;
     border-radius: 40%;
-    height: 7%;
-    width: 3%;
-    top: 34%;  
-    right: 23%;
+    height: 11px;
+    width: 2px;
+    top: 38px;  
+    right: 16px;
     transform: rotate(-10deg); 
 }
 
-/* DE MOND */
+/* DE MOND (Gepositioneerd in het hoofd) */
 div[data-naam="mond"] {
     display: block;
     width: 12px;
@@ -257,8 +254,8 @@ div[data-naam="mond"] {
     border: 2px solid black;
     border-radius: 50%;
     position: absolute;
-    bottom: 15%; 
-    left: 39%;  
+    bottom: 17px; 
+    left: 27px;  
 }
 
 /* NEK */
@@ -267,29 +264,19 @@ div[data-naam="nek"] {
     background-color: var(--huid-kleur);
     border: 4px solid black;
     border-radius: var(--gezicht-ronding);
-    height: 11%;
-    width: 9%;
-    top: 37%;
-    left: 44%;
+    height: 56px;
+    width: 29px;
+    top: 189px;
+    left: 141px;
 }
 
 /* JURK */
-/* div[data-naam="wrapper-jurk"] {
-    position: absolute;
-    top: 10%; left: 10%;
-    width: 500px; height: 500px;
-    filter: drop-shadow(-3px -3px 0 #000) 
-            drop-shadow(3px -3px 0 #000) 
-            drop-shadow(-3px 3px 0 #000) 
-            drop-shadow(3px 3px 0 #000);
-} */
-
 div[data-naam="jurk"] {
     position: absolute;
-    width: 50%;
-    height: 34%;
-    top: 45%;
-    left: 25%;
+    width: 160px;
+    height: 173px;
+    top: 230px;
+    left: 80px;
     clip-path: polygon(25% 0%, 75% 0%, 60% 50%, 100% 100%, 0 100%, 40% 50%);
     background-color: var(--jurk-kleur);
 }
@@ -297,57 +284,59 @@ div[data-naam="jurk"] {
 /* ARMEN */
 div[data-naam="bovenarm-links"] {
     position: absolute;
-    width: 5%;
-    height: 14%;
-    top: 45%;
-    left: 32%;
+    width: 16px;
+    height: 71px;
+    top: 230px;
+    left: 102px;
     border-radius: 25%;
     background-color: var(--jurk-kleur);
-    rotate: 27deg;
+    transform: rotate(27deg);
 }
 
+/* Onderarm zit IN bovenarm (vandaar px berekend over 16x71px) */
 div[data-naam="onderarm-links"] {
     position: absolute;
-    width: 100%;
-    height: 80%;
-    top: 89%;
-    left: 74%;
-    rotate: 152deg;
+    width: 16px;
+    height: 57px;
+    top: 63px;
+    left: 12px;
+    transform: rotate(152deg);
     border-radius: 25%;
     border: 2px solid black;
     background-color: var(--huid-kleur);
 }
+
 div[data-naam="bovenarm-rechts"] {
     position: absolute;
-    width: 5%;
-    height: 14%;
-    top: 45%;
-    left: 59%;
+    width: 16px;
+    height: 71px;
+    top: 230px;
+    left: 189px;
     border-radius: 25%;
     background-color: var(--jurk-kleur);
 }
 
 div[data-naam="onderarm-rechts"] {
     position: absolute;
-    width: 100%;
-    height: 80%;
-    top: 46%;
-    left: 131%;
-    rotate: 61deg;
+    width: 16px;
+    height: 57px;
+    top: 33px;
+    left: 21px;
+    transform: rotate(61deg);
     border-radius: 25%;
     border: 2px solid black;
     background-color: var(--huid-kleur);
 }
 
 /* BLOEM */
-/* BLOEMSTEEL */
+/* Gepositioneerd relatief aan de onderarm waar hij in zit */
 div[data-naam="bloemsteel"] {
     position: absolute;
-    width: 30%;
-    height: 90%;
-    top: -63%;
-    left: -96%;
-    rotate: 123deg;
+    width: 5px;
+    height: 51px;
+    top: -36px;
+    left: -15px;
+    transform: rotate(123deg);
     border: 2px solid black;
     border-radius: 25%;
     background-color: green;
@@ -355,17 +344,17 @@ div[data-naam="bloemsteel"] {
 
 div[data-naam="bloem-bovenkant"] {
     position: absolute; 
-    width: 100%;
-    height: 10%;
-    top: 98%;
-    left: -5%;
-    scale: 2.5; 
+    width: 5px;
+    height: 5px;
+    top: 50px;
+    left: 0px;
+    transform: scale(2.5); 
 }
 
 div[data-naam="bloemblaadjes-groep"] {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 5px;
+    height: 5px;
     top: 0;
     left: 0;
 }
@@ -373,59 +362,123 @@ div[data-naam="bloemblaadjes-groep"] {
 /* BLOEMHART */
 div[data-naam="bloemhart"] {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 5px;
+    height: 5px;
     top: 0;
     left: 0;
     border: 1px solid black;
     border-radius: 100%;
     background-color: yellow;
+    z-index: 2; /* Zorg dat het hart voor de blaadjes zit */
 }
 
 /* BLOEMBLAADJES */
 div[data-naam="bloemblaadjes-groep"] > div {
     position: absolute;
-    width: 50%;
-    height: 150%;
-    scale: 2;
+    width: 3px;
+    height: 8px;
     border: 0.2px solid black;
     border-radius: 15% 85% 24% 76% / 26% 52% 48% 74%;
 }
 
 div[data-naam="bloemblaadje1"] {
-    top: 142%;
-    left: -110%;
+    top: 7px; left: -6px;
     background-color: #cc00ff;
-    rotate: 45deg;
+    transform: scale(2) rotate(45deg);
+}
+div[data-naam="bloemblaadje2"] {
+    top: 0px; left: -9px;
+    background-color: #ff8400;
+    transform: scale(2) rotate(100deg);
+}
+div[data-naam="bloemblaadje3"] {
+    top: -7px; left: -8px;
+    background-color: #ff0051;
+    transform: scale(2) rotate(140deg);
+}
+div[data-naam="bloemblaadje4"] {
+    top: 7px; left: 8px;
+    background-color: #bd459f;
+    transform: scale(2) rotate(147deg);
+}
+div[data-naam="bloemblaadje5"] {
+    top: -4px; left: 11px;
+    background-color: #ff9900;
+    transform: scale(2) rotate(82deg);
+}
+div[data-naam="bloemblaadje6"] {
+    top: -10px; left: 3px;
+    background-color: #a170e6;
+    transform: scale(2) rotate(31deg);
 }
 
-div[data-naam="bloemblaadje2"] {
-    top: -4%;
-    left: -170%;
-    background-color: #ff8400;
-    rotate: 100deg;}
+/* ========================================= */
+/* DE SPIEGELING EN SCHALING VAN DE KAART    */
+/* ========================================= */
 
-div[data-naam="bloemblaadje3"] {
-    top: -143%;
-    left: -153%;
-    background-color: #ff0051;
-    rotate: 140deg;}
+div[data-naam="helft-boven"],
+div[data-naam="helft-onder"] {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%; 
+    overflow: hidden; 
+}
 
-div[data-naam="bloemblaadje4"] {
-    top: 142%;
-    left: 160%;
-    background-color: #bd459f;
-    rotate: 147deg;}
+div[data-naam="helft-boven"] {
+    top: 0;
+}
 
-div[data-naam="bloemblaadje5"] {
-    top: -74%;
-    left: 210%;
-    background-color: #ff9900;
-    rotate: 82deg;}
+div[data-naam="helft-onder"] {
+    bottom: 0;
+    transform: rotate(180deg);
+}
 
-div[data-naam="bloemblaadje6"] {
-    top: -207%;
-    left: 63%;
-    background-color: #a170e6;
-    rotate: 31deg;
+/* DE MAGISCHE SCHAAL-WRAPPER */
+div[data-naam="tekening-schaal"] {
+    width: 100%;
+    height: 510px;
+    position: absolute;
+    top: 0;
+    left: 24px;
+    
+    transform-origin: top center;
+    transform: scale(0.7); 
+}
+
+/* De dikke zwarte scheidslijn precies in het midden */
+div[data-naam="middellijn"] {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 8px; 
+    background-color: black;
+    z-index: 50; 
+    transform: translateY(-50%); 
+}
+
+/* ========================================= */
+/* DE RESPONSIVE MAGIC TRICK                 */
+/* ========================================= */
+
+@media (max-width: 800px) {
+    div[data-naam="kaart"],
+    nav[data-naam="control-kaart"] {
+        transform: scale(0.8); 
+    }
+}
+
+@media (max-width: 500px) {
+    div[data-naam="kaart"],
+    nav[data-naam="control-kaart"] {
+        transform: scale(0.7); 
+    }
+}
+
+@media (max-width: 380px) {
+    div[data-naam="kaart"],
+    nav[data-naam="control-kaart"] {
+        transform: scale(0.55); 
+    }
 }
