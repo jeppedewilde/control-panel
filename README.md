@@ -48,7 +48,7 @@ wat ga ik de volgende keer doen? -> Morgen ga ik verder met de vormen toevoegen 
 
 
 ### donderdag 5 maart 
-wat heb ik vandaag gedaan? -> Vandaag ben ik verder gegaan met de konining op de speelkaart. Ik ben nog niet klaar maar wel een stuk verder gekomen en een duidelijker beeld in mijn hoofd van wat ik nog wil toevoegen. Ook heb ik nagedacht over hoe ik mijn control panel ga stijlen, ik denk dat ik iets wil doen met een 2e speelkaart waar de controls op staan. Voor mijn tweede theme wil ik een koning op de speelkaart in plaats van een konining. Daarnaast heb ik een workshop grid gevolgd bij Nils en heb ik met Nils en mijn groepje het voortgangsgesprek gehad. Tijdens de checkout heb ik dit alles besproken met ...
+wat heb ik vandaag gedaan? -> Vandaag ben ik verder gegaan met de konining op de speelkaart. Ik ben nog niet klaar maar wel een stuk verder gekomen en een duidelijker beeld in mijn hoofd van wat ik nog wil toevoegen. Ook heb ik nagedacht over hoe ik mijn control panel ga stijlen, ik denk dat ik iets wil doen met een 2e speelkaart waar de controls op staan. Voor mijn tweede theme wil ik een koning op de speelkaart in plaats van een konining. Daarnaast heb ik een workshop grid gevolgd bij Nils en heb ik met Nils en mijn groepje het voortgangsgesprek gehad. Tijdens de checkout heb ik dit alles besproken met Michel.
 
 hoelang heb ik daarover gedaan? -> De workshop duurde een uur, het voortgangsgesprek 45min en de rest van de dag ben ik bezig geweest met mijn idee verder uitdenken en werken aan de speelkaart.
 
@@ -58,30 +58,40 @@ wat ga ik de volgende keer doen? -> Volgende week ga ik verder met de speelkaart
 
 
 ### weekvoortgang
-...
+Deze week voelde een beetje rommelig om ik woensdag best veel tijd heb verloren door het switchen tussen mijn 2 mogelijkheden, maar ik heb mijn best gedaan mezelf snel te herpakken donderdag. 
+
+Hiermee begon ik woensdagmiddag na de wissel:
+<img width="568" height="684" alt="Scherm­afbeelding 2026-03-05 om 15 31 18" src="https://github.com/user-attachments/assets/41e7ebfe-41f8-4575-85db-1125e23e80b6" />
+
+Dit had ik woensdag toen ik weg ging:
+<img width="420" height="628" alt="Scherm­afbeelding 2026-03-04 om 15 56 40" src="https://github.com/user-attachments/assets/957365d1-eb26-426f-bd04-966522a754a8" />
+
+Donderdag zag het er aan het eind van de dag zo uit:
+<img width="420" height="758" alt="Scherm­afbeelding 2026-03-04 om 15 53 02" src="https://github.com/user-attachments/assets/0c4b8bb0-7e04-451f-935f-c682bd411cf0" />
+
 
 
 
 ## week 2
 
 ### woensdag 11 maart
-wat heb ik vandaag gedaan? -> 
+wat heb ik vandaag gedaan? -> Vandaag heb ik de workshop container style queries gevolgd bij Sanne. Ik heb daarna mijn tweede thema toegevoegd (een klaver koning in plaats van de harten koningin) en heb mijn controls geschreven als container style queries. Ik heb mijn radio buttons voor gezichtsronding omgezet in een slider. Ik heb ook controls toegevoegd. Door checkboxes te combineren zijn de resultaten verschillend voor de twee karakters. Koningin: bloem kan ronddraaien en hart kan breken. Koning: zwaard kan zwaaien en klavertje kan dwarrelen. Beide karakters kunnen heen en weer bewegen met een control die voor beide geld. Vlak voor de checkout heb ik een achtergrond achter de kaarten toegevoegd met QUEEN QUEEN QUEEN of KING KING KING. Dit moet echter nog wel geperfectionaliseerd worden. Tijdens de checkout heb ik dit alles besproken met Alex. 
 
-hoelang heb ik daarover gedaan? -> 
+hoelang heb ik daarover gedaan? -> Ik ben hier de hele dag mee bezig geweest.
 
-wat heb ik geleerd? -> 
+wat heb ik geleerd? -> Ik heb voor het eerst met container style queries gewerkt en daar veel over geleerd.
 
-wat ga ik de volgende keer doen? -> 
+wat ga ik de volgende keer doen? -> Morgen ga ik de achtergrond fixen, beginnen aan de styling van het control panel en wat doen aan de positionering van de kaarten. Het idee is dat de control panel kaart grotendeels verscholen is achter de speelkaart en op hover in beeld komt.
 
 
 ### donderdag 12 maart
-wat heb ik vandaag gedaan? -> 
+wat heb ik vandaag gedaan? -> Vandaag heb ik heb control panel (deels) gestyled en de positionering van de kaarten aangepast. Ik heb een slider toegevoegd die het nacht maakt. Daarnaast heb ik een checkbox toegevoegd met een animatie waar auto's over de middellijn van de kaart rijden. Als het nacht wordt door de slider krijgen de auto's geleidelijk steeds meer licht (koplampen). Smiddags had ik ook voortgangsgesprek bij Sanne. Tijdens de checkout heb ik dit alles besproken met Melvin.
 
-hoelang heb ik daarover gedaan? -> 
+hoelang heb ik daarover gedaan? -> Hieraan gewerkt tot half 4 ivm de weekly nerd.
 
-wat heb ik geleerd? -> 
+wat heb ik geleerd? -> Ik heb meer geleerd over container style queries omdat ik daar weer mee heb gewerkt vandaag.
 
-wat ga ik de volgende keer doen? -> 
+wat ga ik de volgende keer doen? -> Responsiveness fixen, typografie toevoegen, ont-"classen"
 
 
 ### weekvoortgang
