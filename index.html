@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <script src="script.js" defer></script>
     <title>Control panel</title>
 </head>
 
@@ -12,22 +13,37 @@
     <main>
         <nav data-naam="control-kaart">
             <div data-naam="control-canvas">
-                <label>
-                    <input type="checkbox"> Kroon Paars maken
-                </label>
-                <span>Vorm van het gezicht:</span>
-                <label>
-                    <input type="radio" name="gezicht-vorm" checked> Rond
-                </label>
-                <label>
-                    <input type="radio" name="gezicht-vorm"> Hoekig
-                </label>
-                <label>
-                    <input type="radio" name="gezicht-vorm"> Blok
-                </label>
-                <label>
-                    <input type="checkbox"> Bloem
-                </label>
+                <div data-naam="controls-grid">
+                    <label>
+                        <input type="checkbox" value="kroon"> 👑
+                    </label>
+                    <label>
+                        <input type="checkbox" value="wind"> 🌬️
+                    </label>
+                    <label>
+                        <input type="checkbox" value="icoon"> 💔
+                    </label>
+                    <label>
+                        <input type="checkbox" value="koning"> ♣️
+                    </label>
+                    <label>
+                        <input type="checkbox" value="beweeg"> ↔️
+                    </label>
+                    <label>
+                        <input type="checkbox" value="autos"> 🚙
+                    </label>
+                </div>
+                <label>Gezicht <input type="range" value="0" min="0" max="100" step="50" list="gezicht" name="gezicht"></label>
+                <datalist id="gezicht">
+                    <option value="0">0</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </datalist>
+                <label>Nacht <input type="range" value="0" min="0" max="100" list="nacht" name="nacht"></label>
+                <datalist id="nacht">
+                    <option value="0">Dag</option>
+                    <option value="100">Nacht</option>
+                </datalist>
             </div>
         </nav>
 
@@ -36,40 +52,62 @@
 
                 <div data-naam="helft-boven">
                     <div data-naam="tekening-schaal">
-                        <div data-naam="hart-groot"></div>
-                        <div data-naam="kroon"></div>
-                        <div data-naam="haar-links"></div>
-                        <div data-naam="hoofd">
-                            <div data-naam="oog"></div>
-                            <div data-naam="wimper1"></div>
-                            <div data-naam="wimper2"></div>
-                            <div data-naam="wimper3"></div>
-                            <div data-naam="wimper4"></div>
-                            <div data-naam="mond"></div>
+                        <div data-naam="wrapper-hart">
+                            <div data-naam="icoon-groot"></div>
                         </div>
-                        <div data-naam="nek"></div>
-                        <div data-naam="wrapper-jurk">
-                            <div data-naam="jurk"></div>
-                        </div>
-                        <div data-naam="bovenarm-links">
-                            <div data-naam="onderarm-links">
+                        <div data-naam="karakter">
+                            <div data-naam="kroon"></div>
+                            <div data-naam="kroon-koning"></div>
+                            <div data-naam="haar-links"></div>
+                            <div data-naam="haar-koning"></div>
+                            <div data-naam="hoofd">
+                                <div data-naam="oog"></div>
+                                <div data-naam="wimper1"></div>
+                                <div data-naam="wimper2"></div>
+                                <div data-naam="wimper3"></div>
+                                <div data-naam="wimper4"></div>
+                                <div data-naam="wenkbrauw1"></div>
+                                <div data-naam="baard"></div>
+                                <div data-naam="mond"></div>
                             </div>
-                        </div>
-                        <div data-naam="bovenarm-rechts">
-                            <div data-naam="onderarm-rechts">
-                                <div data-naam="bloem">
-                                    <div data-naam="bloemsteel">
-                                        <div data-naam="bloem-bovenkant">
-                                            <div data-naam="bloemblaadjes-groep">
-                                                <div data-naam="bloemblaadje1"></div>
-                                                <div data-naam="bloemblaadje2"></div>
-                                                <div data-naam="bloemblaadje3"></div>
-                                                <div data-naam="bloemblaadje4"></div>
-                                                <div data-naam="bloemblaadje5"></div>
-                                                <div data-naam="bloemblaadje6"></div>
+                            <div data-naam="nek"></div>
+                            <div data-naam="wrapper-jurk">
+                                <div data-naam="jurk"></div>
+                                <div data-naam="mantel"></div>
+                            </div>
+                            <div data-naam="bovenarm-links">
+                                <div data-naam="onderarm-links">
+                                </div>
+                            </div>
+                            <div data-naam="bovenarm-links-koning">
+                                <div data-naam="onderarm-links-koning">
+                                </div>
+                            </div>
+                            <div data-naam="bovenarm-rechts">
+                                <div data-naam="onderarm-rechts">
+                                    <div data-naam="bloem">
+                                        <div data-naam="bloemsteel">
+                                            <div data-naam="bloem-bovenkant">
+                                                <div data-naam="bloemblaadjes-groep">
+                                                    <div data-naam="bloemblaadje1"></div>
+                                                    <div data-naam="bloemblaadje2"></div>
+                                                    <div data-naam="bloemblaadje3"></div>
+                                                    <div data-naam="bloemblaadje4"></div>
+                                                    <div data-naam="bloemblaadje5"></div>
+                                                    <div data-naam="bloemblaadje6"></div>
+                                                </div>
+                                                <div data-naam="bloemhart"></div>
                                             </div>
-                                            <div data-naam="bloemhart"></div>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-naam="bovenarm-rechts-koning">
+                                <div data-naam="onderarm-rechts-koning">
+                                    <div data-naam="zwaard">
+                                        <div data-naam="zwaard-kling"></div>
+                                        <div data-naam="zwaard-stootplaat"></div>
+                                        <div data-naam="zwaard-handvat"></div>
                                     </div>
                                 </div>
                             </div>
@@ -79,44 +117,68 @@
 
                 <div data-naam="middellijn">
                     <div data-naam="stippellijn"></div>
+                    <div data-naam="auto-boven">🚗</div>
+                    <div data-naam="auto-onder">🚙</div>
                 </div>
 
                 <div data-naam="helft-onder">
                     <div data-naam="tekening-schaal">
-                        <div data-naam="hart-groot"></div>
-                        <div data-naam="kroon"></div>
-                        <div data-naam="haar-links"></div>
-                        <div data-naam="hoofd">
-                            <div data-naam="oog"></div>
-                            <div data-naam="wimper1"></div>
-                            <div data-naam="wimper2"></div>
-                            <div data-naam="wimper3"></div>
-                            <div data-naam="wimper4"></div>
-                            <div data-naam="mond"></div>
+                        <div data-naam="wrapper-hart">
+                            <div data-naam="icoon-groot"></div>
                         </div>
-                        <div data-naam="nek"></div>
-                        <div data-naam="wrapper-jurk">
-                            <div data-naam="jurk"></div>
-                        </div>
-                        <div data-naam="bovenarm-links">
-                            <div data-naam="onderarm-links">
+                        <div data-naam="karakter">
+                            <div data-naam="kroon"></div>
+                            <div data-naam="kroon-koning"></div>
+                            <div data-naam="haar-links"></div>
+                            <div data-naam="haar-koning"></div>
+                            <div data-naam="hoofd">
+                                <div data-naam="oog"></div>
+                                <div data-naam="wimper1"></div>
+                                <div data-naam="wimper2"></div>
+                                <div data-naam="wimper3"></div>
+                                <div data-naam="wimper4"></div>
+                                <div data-naam="wenkbrauw1"></div>
+                                <div data-naam="baard"></div>
+                                <div data-naam="mond"></div>
                             </div>
-                        </div>
-                        <div data-naam="bovenarm-rechts">
-                            <div data-naam="onderarm-rechts">
-                                <div data-naam="bloem">
-                                    <div data-naam="bloemsteel">
-                                        <div data-naam="bloem-bovenkant">
-                                            <div data-naam="bloemblaadjes-groep">
-                                                <div data-naam="bloemblaadje1"></div>
-                                                <div data-naam="bloemblaadje2"></div>
-                                                <div data-naam="bloemblaadje3"></div>
-                                                <div data-naam="bloemblaadje4"></div>
-                                                <div data-naam="bloemblaadje5"></div>
-                                                <div data-naam="bloemblaadje6"></div>
+                            <div data-naam="nek"></div>
+                            <div data-naam="wrapper-jurk">
+                                <div data-naam="jurk"></div>
+                                <div data-naam="mantel"></div>
+                            </div>
+                            <div data-naam="bovenarm-links">
+                                <div data-naam="onderarm-links">
+                                </div>
+                            </div>
+                            <div data-naam="bovenarm-links-koning">
+                                <div data-naam="onderarm-links-koning">
+                                </div>
+                            </div>
+                            <div data-naam="bovenarm-rechts">
+                                <div data-naam="onderarm-rechts">
+                                    <div data-naam="bloem">
+                                        <div data-naam="bloemsteel">
+                                            <div data-naam="bloem-bovenkant">
+                                                <div data-naam="bloemblaadjes-groep">
+                                                    <div data-naam="bloemblaadje1"></div>
+                                                    <div data-naam="bloemblaadje2"></div>
+                                                    <div data-naam="bloemblaadje3"></div>
+                                                    <div data-naam="bloemblaadje4"></div>
+                                                    <div data-naam="bloemblaadje5"></div>
+                                                    <div data-naam="bloemblaadje6"></div>
+                                                </div>
+                                                <div data-naam="bloemhart"></div>
                                             </div>
-                                            <div data-naam="bloemhart"></div>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-naam="bovenarm-rechts-koning">
+                                <div data-naam="onderarm-rechts-koning">
+                                    <div data-naam="zwaard">
+                                        <div data-naam="zwaard-kling"></div>
+                                        <div data-naam="zwaard-stootplaat"></div>
+                                        <div data-naam="zwaard-handvat"></div>
                                     </div>
                                 </div>
                             </div>

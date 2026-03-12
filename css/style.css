@@ -1,146 +1,207 @@
 /****************/
-/** VARIABELEN **/
+/** MARK: VARIABELEN **/
 /****************/
 :root {
-    --kroon-kleur: #330099;
+    --kroon-kleur: #ff7af4;
     --gezicht-ronding: 50px 50px 40px 40px;
     --huid-kleur: #fff4e6;
     --jurk-kleur: rgb(25, 93, 93);
+    --kleding-kleur-donker: rgb(18, 67, 67);
     --vorm-kleur: red;
-    --haar-kleur: #45074b;
+    --haar-kleur: #dea844;
+    --gezicht: 0;
+    --nacht: 0;
 }
 
 /*******************/
-/** CONTROL PANEL **/
-/*******************/
-
-/* Kroon kleur */
-main:has(nav label:nth-of-type(1) > input:checked) {
-    --kroon-kleur: #cc00ff;
-}
-
-/* Vorm gezicht */
-main:has(nav label:nth-of-type(2) > input:checked) {
-    --gezicht-ronding: 50px 50px 40px 40px; 
-}
-
-main:has(nav label:nth-of-type(3) > input:checked) {
-    --gezicht-ronding: 20px; 
-}
-
-main:has(nav label:nth-of-type(4) > input:checked) {
-    --gezicht-ronding: 0px; 
-}
-
-main:has(nav label:nth-of-type(5) > input:checked) {
-    div[data-naam="bloem-bovenkant"] {
-        animation: windmolen 5s linear infinite;
-    }
-}
-
-@keyframes windmolen {
-    100% {
-        rotate: 360deg;
-    }
-}
-
-/*******************/
-/** BASIS STYLING **/
+/** MARK: BASIS STYLING **/
 /*******************/
 body {
-    background-color: #9dc1aa;
+    background-color: var(--jurk-kleur);
     margin: 0;
     padding: 50px;
     font-family: sans-serif;
+    --opgeteld: calc(var(--gezicht) + var(--nacht));
 }
 
 main {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    gap: 5em;
-    flex-wrap: wrap; 
+    position: relative;
+    flex-wrap: wrap;
+    left: 32px;
+}
+
+
+/***********************/
+/** MARK: ACHTERGROND TEKST **/
+/***********************/
+body {
+    overflow: hidden; 
+}
+
+body::before {
+    content: "QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN";
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    font-size: 120px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.2); 
+    z-index: -1; 
+    transform: rotate(-15deg); 
+    pointer-events: none;
+}
+
+html:has([value="koning"]:checked) body::before {
+    content: "KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING";
 }
 
 /******************/
-/** CONTROL CARD **/
+/** MARK: CONTROL CARD **/
 /******************/
 nav[data-naam="control-kaart"] {
-    width: 400px;  /* Zelfde als de speelkaart! */
-    height: 600px; /* Zelfde als de speelkaart! */
+    width: 400px;
+    height: 600px;
     background-color: #fcfcfc;
     border: 12px solid black;
     border-radius: 20px;
-    position: relative;
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     transform-origin: top center;
+    z-index: 1;
+    translate: -7% -1%;
+    rotate: -4deg;
+    transform-origin: bottom center;
+    box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+nav:hover {
+    translate: -32% -1%;
+    rotate: -10deg;
+}
+
+nav:hover ~ div[data-naam="kaart"] {
+    translate: 18% -1%;
+    rotate: 5deg;
 }
 
 /* HET BINNENSTE KADER VAN HET CONTROL PANEL */
 div[data-naam="control-canvas"] {
     width: 320px;
     height: 510px;
-    background-color: #f0f0f0; /* Iets lichter grijs voor leesbaarheid */
+    background-color: #f0f0f0;
     border: 8px solid black;
-    position: relative;
+    position: absolute;
     overflow: hidden;
-    
-    /* Layout voor de knoppen erin */
+
     display: flex;
     flex-direction: column;
     gap: 15px;
     padding: 30px;
-    box-sizing: border-box; 
+    box-sizing: border-box;
+}
+
+/* styling controls */
+input[type="checkbox"] { 
+    display: none; 
+}
+
+label:has(input[type="checkbox"]) {
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    width: 48px;  
+    height: 48px; 
+    padding: 0; 
+    margin: 0 0 10px 0;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 12px; 
+    cursor: pointer;
+    font-size: 24px;
+    user-select: none; 
+    
+    box-shadow: 0px 6px 0px #b3b3b3; 
+    
+    transition: all 0.1s ease-out; 
+}
+
+label:has(input[type="checkbox"]):hover {
+    background-color: #e6e6e6;
+    transform: translateY(2px);
+    box-shadow: 0px 4px 0px #b3b3b3;
+}
+
+label:has(input[type="checkbox"]:checked) {
+    transform: translateY(6px); 
+    
+    box-shadow: 0px 0px 0px #b3b3b3; 
+    
+    background-color: var(--jurk-kleur); 
+    border-color: var(--kleding-kleur-donker);
+    color: black;
+}
+
+div[data-naam="controls-grid"] {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    place-items: center;
 }
 
 /****************/
-/** QUEEN CARD **/
+/** MARK: QUEEN CARD **/
 /****************/
-
-/* DE KAART (Heeft nu VASTE PIXELS!) */
+/* DE KAART */
 div[data-naam="kaart"] {
-    width: 400px;  /* Vast formaat */
-    height: 600px; /* Vast formaat */
+    width: 400px;
+    height: 600px;
     background-color: #fcfcfc;
     border: 12px solid black;
     border-radius: 20px;
-    position: relative;
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    transform-origin: top center; /* Belangrijk voor het schalen later */
+    z-index: 10;
+    translate: 0% 0%;
+    transform: rotate(4deg);
+    transform-origin: bottom center;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 /* HET GRIJZE KADER */
 div[data-naam="canvas"] {
-    width: 320px;
-    height: 510px;
-    background-color: #d3d3d3;
+    width: 304px;
+    height: 493px;
+    background-color: color-mix(in srgb, #1a1a3a calc(var(--nacht) * 1%), #d3d3d3);
+    transition: background-color 0.1s linear;
     border: 8px solid black;
-    position: relative;
+    position: absolute;
     overflow: hidden;
 }
 
 /****************/
-/** ONDERDELEN **/
+/** MARK: ONDERDELEN **/
 /****************/
-
 /* HART GROOT */
-div[data-naam="hart-groot"] {
+div[data-naam="icoon-groot"] {
     background-color: var(--vorm-kleur);
     width: 80px;
     height: 80px;
-    clip-path: shape(
-        from 50% 91%,
-        line to 90% 50%,
-        arc to 50% 9%  of 1%,
-        arc to 10% 50% of 1%
-    );
+    clip-path: shape(from 50% 91%,
+            line to 90% 50%,
+            arc to 50% 9% of 1%,
+            arc to 10% 50% of 1%);
     position: absolute;
-    top: 66px;   
-    left: -35px; 
+    top: 66px;
+    left: -35px;
 }
 
 /* DE KROON */
@@ -150,12 +211,25 @@ div[data-naam="kroon"] {
     top: 41px;
     left: 118px;
     background-color: var(--kroon-kleur);
-    border-bottom: 4px solid rgb(255, 208, 0);
     position: absolute;
     z-index: 11;
     margin: 0;
     transition: background-color 0.5s ease;
     clip-path: polygon(0% 0%, 20% 100%, 80% 100%, 100% 0%, 75% 40%, 50% 10%, 25% 40%);
+}
+
+div[data-naam="kroon-koning"] {
+    display: none;
+    width: 80px;
+    height: 73px;
+    top: 41px;
+    left: 117px;
+    background-color: var(--kroon-kleur);
+    position: absolute;
+    z-index: 11;
+    margin: 0;
+    transition: background-color 0.5s ease;
+    clip-path: polygon(0% 0%, 10% 100%, 90% 100%, 100% 0%, 75% 40%, 50% 10%, 25% 40%);
 }
 
 /* HAAR LINKS */
@@ -164,27 +238,39 @@ div[data-naam="haar-links"] {
     width: 64px;
     height: 138px;
     clip-path: polygon(69% 17%, 100% 10%, 100% 81%, 87% 78%, 50% 88%, 47% 38%);
-    top: 87px;   
-    left: 67px;  
+    top: 87px;
+    left: 67px;
+    background-color: var(--haar-kleur);
+    transform: rotate(1deg);
+}
+
+div[data-naam="haar-koning"] {
+    display: none;
+    position: absolute;
+    width: 131px;
+    height: 100px;
+    clip-path: polygon(25% 0%, 75% 0%, 90% 16%, 85% 44%, 18% 44%, 9% 22%);
+    top: 101px;
+    left: 89px;
     background-color: var(--haar-kleur);
     transform: rotate(1deg);
 }
 
 /* HET HOOFD */
 div[data-naam="hoofd"] {
-    width: 70px;  
-    height: 112px; 
-    top: 92px;   
-    left: 118px;  
+    width: 70px;
+    height: 112px;
+    top: 92px;
+    left: 118px;
     background-color: var(--huid-kleur);
     border: 4px solid black;
-    border-radius: var(--gezicht-ronding);
+    border-radius: 50px 50px 40px 40px;
     position: absolute;
     z-index: 10;
     transition: all 0.3s ease;
 }
 
-/* HET OOG (Gepositioneerd in het hoofd) */
+/* HET OOG */
 div[data-naam="oog"] {
     display: block;
     width: 20px;
@@ -192,11 +278,11 @@ div[data-naam="oog"] {
     border-bottom: 3px solid black;
     border-radius: 50%;
     position: absolute;
-    top: 28px;  
-    right: 14px; 
+    top: 28px;
+    right: 14px;
 }
 
-/* WIMPERS (Gepositioneerd in het hoofd) */
+/* WIMPERS */
 div[data-naam="wimper1"] {
     z-index: 100;
     position: absolute;
@@ -204,9 +290,9 @@ div[data-naam="wimper1"] {
     border-radius: 40%;
     height: 11px;
     width: 2px;
-    top: 39px;  
+    top: 39px;
     right: 29px;
-    transform: rotate(15deg); 
+    transform: rotate(15deg);
 }
 
 div[data-naam="wimper2"] {
@@ -216,9 +302,9 @@ div[data-naam="wimper2"] {
     border-radius: 40%;
     height: 11px;
     width: 2px;
-    top: 39px;  
+    top: 39px;
     right: 25px;
-    transform: rotate(9deg); 
+    transform: rotate(9deg);
 }
 
 div[data-naam="wimper3"] {
@@ -228,9 +314,9 @@ div[data-naam="wimper3"] {
     border-radius: 40%;
     height: 11px;
     width: 2px;
-    top: 39px;  
+    top: 39px;
     right: 20px;
-    transform: rotate(-5deg); 
+    transform: rotate(-5deg);
 }
 
 div[data-naam="wimper4"] {
@@ -240,12 +326,24 @@ div[data-naam="wimper4"] {
     border-radius: 40%;
     height: 11px;
     width: 2px;
-    top: 38px;  
+    top: 38px;
     right: 16px;
-    transform: rotate(-10deg); 
+    transform: rotate(-10deg);
 }
 
-/* DE MOND (Gepositioneerd in het hoofd) */
+/* WENKBRAUWEN */
+div[data-naam="wenkbrauw1"] {
+    display: none;
+    position: absolute;
+    height: 22px;
+    width: 31px;
+    top: 24px;
+    left: 33px;
+    background-color: var(--haar-kleur);
+    clip-path: polygon(25% 0%, 75% 0%, 90% 16%, 9% 22%);
+}
+
+/* DE MOND */
 div[data-naam="mond"] {
     display: block;
     width: 12px;
@@ -254,8 +352,26 @@ div[data-naam="mond"] {
     border: 2px solid black;
     border-radius: 50%;
     position: absolute;
-    bottom: 17px; 
-    left: 27px;  
+    bottom: 17px;
+    left: 27px;
+}
+
+/* BAARD */
+div[data-naam="baard"] {
+    display: none;
+    position: absolute;
+    width: 97px;
+    height: 109px;
+    top: 89px;
+    left: -13px;
+    background-color: var(--haar-kleur);
+    clip-path: polygon(10% 0%, 90% 0%,
+            100% 30%,
+            80% 70%,
+            50% 100%,
+            20% 70%,
+            0% 30%);
+    z-index: 5;
 }
 
 /* NEK */
@@ -281,7 +397,27 @@ div[data-naam="jurk"] {
     background-color: var(--jurk-kleur);
 }
 
+/* MANTEL */
+div[data-naam="mantel"] {
+    position: absolute;
+    width: 160px;
+    height: 173px;
+    top: 230px;
+    left: 80px;
+    background-color: var(--jurk-kleur);
+    display: none;
+
+    clip-path: polygon(25% 0%,
+            50% 25%,
+            75% 0%,
+            100% 20%,
+            85% 100%,
+            15% 100%,
+            0% 20%);
+}
+
 /* ARMEN */
+/* bovenarm-links */
 div[data-naam="bovenarm-links"] {
     position: absolute;
     width: 16px;
@@ -293,7 +429,7 @@ div[data-naam="bovenarm-links"] {
     transform: rotate(27deg);
 }
 
-/* Onderarm zit IN bovenarm (vandaar px berekend over 16x71px) */
+/* onderarm-links */
 div[data-naam="onderarm-links"] {
     position: absolute;
     width: 16px;
@@ -306,6 +442,7 @@ div[data-naam="onderarm-links"] {
     background-color: var(--huid-kleur);
 }
 
+/* bovenarm-rechts */
 div[data-naam="bovenarm-rechts"] {
     position: absolute;
     width: 16px;
@@ -316,6 +453,7 @@ div[data-naam="bovenarm-rechts"] {
     background-color: var(--jurk-kleur);
 }
 
+/* onderarm-rechts */
 div[data-naam="onderarm-rechts"] {
     position: absolute;
     width: 16px;
@@ -328,8 +466,62 @@ div[data-naam="onderarm-rechts"] {
     background-color: var(--huid-kleur);
 }
 
+/* ARMEN KONING */
+/* bovenarm-links */
+div[data-naam="bovenarm-links-koning"] {
+    display: none;
+    position: absolute;
+    width: 33px;
+    height: 74px;
+    top: 266px;
+    left: 58px;
+    border-radius: 25%;
+    background-color: var(--jurk-kleur);
+    transform: rotate(27deg);
+}
+
+/* onderarm-links */
+div[data-naam="onderarm-links-koning"] {
+    display: none;
+    position: absolute;
+    width: 33px;
+    height: 57px;
+    top: 63px;
+    left: 12px;
+    transform: rotate(152deg);
+    border-radius: 25%;
+    border: 2px solid black;
+    background-color: var(--huid-kleur);
+}
+
+/* bovenarm-rechts */
+div[data-naam="bovenarm-rechts-koning"] {
+    display: none;
+    position: absolute;
+    width: 33px;
+    height: 74px;
+    top: 266px;
+    left: 230px;
+    border-radius: 25%;
+    background-color: var(--jurk-kleur);
+    transform: rotate(341deg);
+}
+
+/* onderarm-rechts */
+div[data-naam="onderarm-rechts-koning"] {
+    display: none;
+    position: absolute;
+    width: 33px;
+    height: 57px;
+    top: 33px;
+    left: 21px;
+    transform: rotate(61deg);
+    border-radius: 25%;
+    border: 2px solid black;
+    background-color: var(--huid-kleur);
+}
+
 /* BLOEM */
-/* Gepositioneerd relatief aan de onderarm waar hij in zit */
 div[data-naam="bloemsteel"] {
     position: absolute;
     width: 5px;
@@ -343,12 +535,12 @@ div[data-naam="bloemsteel"] {
 }
 
 div[data-naam="bloem-bovenkant"] {
-    position: absolute; 
+    position: absolute;
     width: 5px;
     height: 5px;
     top: 50px;
     left: 0px;
-    transform: scale(2.5); 
+    transform: scale(2.5);
 }
 
 div[data-naam="bloemblaadjes-groep"] {
@@ -369,11 +561,11 @@ div[data-naam="bloemhart"] {
     border: 1px solid black;
     border-radius: 100%;
     background-color: yellow;
-    z-index: 2; /* Zorg dat het hart voor de blaadjes zit */
+    z-index: 2;
 }
 
 /* BLOEMBLAADJES */
-div[data-naam="bloemblaadjes-groep"] > div {
+div[data-naam="bloemblaadjes-groep"]>div {
     position: absolute;
     width: 3px;
     height: 8px;
@@ -382,47 +574,179 @@ div[data-naam="bloemblaadjes-groep"] > div {
 }
 
 div[data-naam="bloemblaadje1"] {
-    top: 7px; left: -6px;
+    top: 7px;
+    left: -6px;
     background-color: #cc00ff;
     transform: scale(2) rotate(45deg);
 }
+
 div[data-naam="bloemblaadje2"] {
-    top: 0px; left: -9px;
+    top: 0px;
+    left: -9px;
     background-color: #ff8400;
     transform: scale(2) rotate(100deg);
 }
+
 div[data-naam="bloemblaadje3"] {
-    top: -7px; left: -8px;
+    top: -7px;
+    left: -8px;
     background-color: #ff0051;
     transform: scale(2) rotate(140deg);
 }
+
 div[data-naam="bloemblaadje4"] {
-    top: 7px; left: 8px;
+    top: 7px;
+    left: 8px;
     background-color: #bd459f;
     transform: scale(2) rotate(147deg);
 }
+
 div[data-naam="bloemblaadje5"] {
-    top: -4px; left: 11px;
+    top: -4px;
+    left: 11px;
     background-color: #ff9900;
     transform: scale(2) rotate(82deg);
 }
+
 div[data-naam="bloemblaadje6"] {
-    top: -10px; left: 3px;
+    top: -10px;
+    left: 3px;
     background-color: #a170e6;
     transform: scale(2) rotate(31deg);
 }
 
-/* ========================================= */
-/* DE SPIEGELING EN SCHALING VAN DE KAART    */
-/* ========================================= */
+/* ZWAARD */
+/* wrapper */
+div[data-naam="zwaard"] {
+    position: absolute;
+    width: 20px;
+    height: 120px;
+    top: -98px;
+    left: -31px;
+    transform: rotate(324deg); 
+    display: none; 
+}
 
+/* kling */
+div[data-naam="zwaard-kling"] {
+    position: absolute;
+    width: 23px;
+    height: 149px;
+    top: -70px; 
+    left: 2px;
+    background-color: white; 
+    clip-path: polygon(50% 0%, 100% 15%, 100% 100%, 0% 100%, 0% 15%);
+}
+
+/* stootplaat */
+div[data-naam="zwaard-stootplaat"] {
+    position: absolute;
+    width: 41px;
+    height: 13px;
+    top: 78px;
+    left: -9px;
+    background-color: #ffd700; 
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+/* handvat */
+div[data-naam="zwaard-handvat"] {
+    position: absolute;
+    width: 14px;
+    height: 35px;
+    top: 93px;
+    left: 4px;
+    background-color: #8b4513; 
+    border: 2px solid black;
+}
+
+/** SNELWEG **/
+/* middellijn */
+div[data-naam="middellijn"] {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 25px; 
+    background-color: #222; 
+    z-index: 50; 
+    transform: translateY(-50%); 
+}
+
+/* witte stippellijn in het midden */
+div[data-naam="stippellijn"] {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-image: linear-gradient(to right, white 50%, transparent 50%);
+    background-size: 40px 4px; 
+    transform: translateY(-50%);
+}
+
+/* autos */
+div[data-naam="auto-boven"],
+div[data-naam="auto-onder"] {
+    position: absolute;
+    font-size: 20px;
+    display: none;  
+}
+
+/* rode auto (links>rechts) */
+div[data-naam="auto-boven"] {
+    top: -14px; 
+    left: -40px; 
+    transform: scaleX(-1); 
+}
+
+/* blauwe auto (ondersteboven, rechts>links) */
+div[data-naam="auto-onder"] {
+    bottom: -14px; 
+    right: -40px; 
+    transform: scaleY(-1); 
+}
+
+/** NACHT **/
+div[data-naam="wrapper-kroon"],
+div[data-naam="wrapper-hart"] {
+    filter: drop-shadow(0 0 calc(var(--nacht) * 0.2px) rgba(255, 255, 0, calc(var(--nacht) / 100)));
+}
+
+div[data-naam="auto-boven"]::after,
+div[data-naam="auto-onder"]::after {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 15px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 100, 0.8));
+    filter: blur(2px);
+    border-radius: 50%;
+    opacity: calc(var(--nacht) / 100);
+    pointer-events: none; 
+}
+
+div[data-naam="auto-boven"]::after {
+    top: 5px;
+    left: -75px;
+}
+
+div[data-naam="auto-onder"]::after {
+    top: 5px;
+    right: 17px;
+}
+
+/***************************/
+/** MARK: SPIEGELING + SCHALING **/
+/***************************/
 div[data-naam="helft-boven"],
 div[data-naam="helft-onder"] {
     position: absolute;
     left: 0;
     width: 100%;
-    height: 50%; 
-    overflow: hidden; 
+    height: 50%;
+    overflow: hidden;
 }
 
 div[data-naam="helft-boven"] {
@@ -434,51 +758,321 @@ div[data-naam="helft-onder"] {
     transform: rotate(180deg);
 }
 
-/* DE MAGISCHE SCHAAL-WRAPPER */
+/* SCHAAL-WRAPPER */
 div[data-naam="tekening-schaal"] {
     width: 100%;
     height: 510px;
     position: absolute;
     top: 0;
     left: 24px;
-    
+
     transform-origin: top center;
-    transform: scale(0.7); 
+    transform: scale(0.7);
 }
 
-/* De dikke zwarte scheidslijn precies in het midden */
-div[data-naam="middellijn"] {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 8px; 
-    background-color: black;
-    z-index: 50; 
-    transform: translateY(-50%); 
-}
-
-/* ========================================= */
-/* DE RESPONSIVE MAGIC TRICK                 */
-/* ========================================= */
-
-@media (max-width: 800px) {
+/********************/
+/** MARK: RESPONSIVENESS **/
+/********************/
+@media (max-width: 768px) {
     div[data-naam="kaart"],
     nav[data-naam="control-kaart"] {
-        transform: scale(0.8); 
+        transform: scale(0.7);
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 580px) {
     div[data-naam="kaart"],
     nav[data-naam="control-kaart"] {
-        transform: scale(0.7); 
+        transform: scale(0.6);
+    }
+
+    nav:hover {
+        translate: -14% -34%;
+        rotate: 5deg;
+    }
+
+    nav:hover ~ div[data-naam="kaart"] {
+        translate: 0% 4%;
+        rotate: -4deg;
     }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 375px) {
     div[data-naam="kaart"],
     nav[data-naam="control-kaart"] {
-        transform: scale(0.55); 
+        transform: scale(0.55);
+    }
+
+    nav:hover {
+        translate: -3% -45%;
+        rotate: 5deg;
+    }
+
+    nav:hover ~ div[data-naam="kaart"] {
+        translate: 0% 0%;
+        rotate: -4deg;
+    }
+}
+
+/*******************/
+/** MARK: MEDIA QUERIES **/
+/*******************/
+/* gezichtronding */
+@container style(--gezicht: 50) {
+    div[data-naam="hoofd"] {
+        border-radius: 25px;
+    }
+}
+
+@container style(--gezicht: 100) {
+    div[data-naam="hoofd"] {
+        border-radius: 0px;
+    }
+}
+
+/* kroonkleur */
+html:has( [value="kroon"]:checked ) {
+    --kroon:true;
+}
+
+@container style(--kroon:true) {
+    div[data-naam="kroon"], div[data-naam="kroon-koning"] {
+        animation: disco-kroon 1s linear infinite;
+    }
+}
+
+@keyframes disco-kroon {
+    0%   { 
+        background-color: #ff0000; 
+        translate: 0 2px;
+        rotate: 0deg;
+    } 
+    16%  { 
+        background-color: #0099ff; 
+        translate: -2px -1px;
+        rotate: -3deg; 
+    } 
+    33%  { 
+        background-color: #ffdd00;
+        translate: 0 -4px; 
+        scale: 1.05;
+        rotate: 0deg;
+    } 
+    50%  { 
+        background-color: #ff0000; 
+        translate: 2px -1px; 
+        rotate: 3deg;
+    } 
+    66%  { 
+        background-color: #0099ff; 
+        translate: 0 1px;
+        rotate: 0deg;
+    } 
+    83%  { 
+        background-color: #ffdd00;
+        translate: -1px -1px;
+        rotate: -2deg;
+    } 
+    100% { 
+        background-color: #00b700;  
+        translate: 0 2px;
+        rotate: 0deg;
+    } 
+}
+
+/* bloem */
+html:has( [value="wind"]:checked ) {
+    --wind:true;
+}
+
+@container style(--wind:true) {
+    div[data-naam="bloem-bovenkant"] {
+        animation: windmolen 5s linear infinite;
+    }
+}
+
+@keyframes windmolen {
+    100% {
+        rotate: 360deg;
+    }
+}
+
+/* hart */
+html:has( [value="icoon"]:checked ) {
+    --icoon:true;
+}
+
+@container style(--icoon:true) {
+    div[data-naam="icoon-groot"] {
+        clip-path: polygon(48% 15%, 35% 0%, 15% 5%, 0% 25%, 0% 45%, 50% 100%,
+            100% 45%, 100% 25%, 85% 5%, 65% 0%, 58% 15%,
+            53% 35%, 63% 55%, 53% 75%, 50% 90%,
+            46% 75%, 56% 55%, 46% 35%);
+    }
+}
+
+/* koning */
+html:has( [value="koning"]:checked ) {
+    --koning:true;
+    --jurk-kleur: #1d2e51;
+    --kleding-kleur-donker: #131e34;
+    --kroon-kleur: #ffd700;
+    --haar-kleur: #5c3a21;
+    --vorm-kleur: black;
+}
+
+@container style(--koning:true) {
+    div[data-naam="icoon-groot"] {
+        clip-path: polygon(40% 100%, 60% 100%, 55% 80%, 53% 65%,
+                65% 72%, 80% 75%, 95% 65%, 100% 50%, 95% 35%, 80% 30%, 65% 35%,
+                58% 45%,
+                62% 30%, 65% 15%, 50% 0%, 35% 15%, 38% 30%,
+                42% 45%,
+                35% 35%, 20% 30%, 5% 35%, 0% 50%, 5% 65%, 20% 75%, 35% 72%,
+                47% 65%, 45% 80%);
+        top: 60px;
+    }
+
+    div[data-naam="haar-links"],
+    div[data-naam="kroon"],
+    div[data-naam="jurk"],
+    div[data-naam="wimper1"],
+    div[data-naam="wimper2"],
+    div[data-naam="wimper3"],
+    div[data-naam="wimper4"],
+    div[data-naam="bovenarm-links"],
+    div[data-naam="bovenarm-rechts"] {
+        display: none;
+    }
+
+    div[data-naam="haar-koning"],
+    div[data-naam="kroon-koning"],
+    div[data-naam="wenkbrauw1"],
+    div[data-naam="baard"],
+    div[data-naam="mantel"],
+    div[data-naam="bovenarm-links-koning"],
+    div[data-naam="onderarm-links-koning"],
+    div[data-naam="bovenarm-rechts-koning"],
+    div[data-naam="onderarm-rechts-koning"],
+    div[data-naam="zwaard"] {
+        display: block;
+    }
+}
+
+/* bewegen */
+html:has( [value="beweeg"]:checked ) {
+    --beweeg:true;
+}
+
+@container style(--beweeg:true) {
+    div[data-naam="karakter"] {
+        animation: beweeg 5s linear infinite;
+    }
+}
+
+@keyframes beweeg {
+    0% {
+        translate: 0px 0;
+    }
+    25% {
+        translate: 40px 0;
+    }
+    75% {
+        translate: -40px 0;
+    }
+    100% {
+        translate: 0px 0;
+    }
+}
+
+/* autos */
+html:has([value="autos"]:checked) {
+    --autos-rijden: true;
+}
+
+@container style(--autos-rijden: true) {
+    div[data-naam="auto-boven"],
+    div[data-naam="auto-onder"] {
+        display: block;
+    }
+
+    div[data-naam="auto-boven"] {
+        animation: rij-naar-rechts 3s linear infinite;
+    }
+
+    div[data-naam="auto-onder"] {
+        animation: rij-naar-links 4s linear infinite;
+    }
+}
+
+@keyframes rij-naar-rechts {
+    0% { translate: 0 0; }
+    100% { translate: 400px 0; }
+}
+
+@keyframes rij-naar-links {
+    0% { translate: 0 0; }
+    100% { translate: -400px 0; }
+}
+
+/* combinaties (koning+kroon) */
+@container style(--koning:true) and style(--kroon:true) {
+    body {
+        --kroon-kleur: #ff7300;
+    }
+}
+
+/* combinaties (koning+wind */
+@container style(--koning:true) and style(--wind:true) {
+    div[data-naam="zwaard"] {
+        top: -108px;
+        left: 9px;
+        transform-origin: 73% 112%;
+        animation: hakken 1s ease-in-out infinite alternate;
+    }
+}
+
+@keyframes hakken {
+    0% {
+        transform: rotate(300deg);
+    }
+    100% {
+        transform: rotate(340deg);
+    }
+}
+
+/* combinaties (koning+icoon */
+@container style(--koning:true) and style(--icoon:true) {
+    div[data-naam="icoon-groot"] {
+        animation: dwarrelen 5s linear infinite alternate;
+    }
+}
+
+@keyframes dwarrelen {
+    0% {
+        transform: translateX(0px) rotate(0deg) rotateY(0deg);
+    }
+    
+    25% {
+        transform: translateX(20px) rotate(20deg) rotateY(45deg);
+    }
+    
+    50% {
+        transform: translateX(0px) rotate(0deg) rotateY(180deg);
+    }
+    
+    75% {
+        transform: translateX(-20px) rotate(-20deg) rotateY(135deg);
+    }
+    
+    100% {
+        transform: translateX(0px) rotate(0deg) rotateY(0deg);
+    }
+}
+
+/* beide sliders maximaal */
+@container style(--opgeteld: calc(100 + 100)) {
+    div[data-naam="kroon"] {
+        background-color: #00b700;
     }
 }
