@@ -85,7 +85,7 @@ wat ga ik de volgende keer doen? -> Morgen ga ik de achtergrond fixen, beginnen 
 
 
 ### donderdag 12 maart
-wat heb ik vandaag gedaan? -> Vandaag heb ik heb control panel (deels) gestyled en de positionering van de kaarten aangepast. Ik heb een slider toegevoegd die het nacht maakt. Daarnaast heb ik een checkbox toegevoegd met een animatie waar auto's over de middellijn van de kaart rijden. Als het nacht wordt door de slider krijgen de auto's geleidelijk steeds meer licht (koplampen). Smiddags had ik ook voortgangsgesprek bij Sanne.
+wat heb ik vandaag gedaan? -> Vandaag heb ik heb control panel (deels) gestyled en de positionering van de kaarten aangepast. Ik heb een slider toegevoegd die het nacht maakt. Daarnaast heb ik een checkbox toegevoegd met een animatie waar auto's over de middellijn van de kaart rijden. Als het nacht wordt door de slider krijgen de auto's geleidelijk steeds meer licht (koplampen). Smiddags had ik ook voortgangsgesprek bij Sanne. Tijdens de checkout heb ik dit alles besproken met Melvin.
 
 hoelang heb ik daarover gedaan? -> Hieraan gewerkt tot half 4 ivm de weekly nerd.
 
