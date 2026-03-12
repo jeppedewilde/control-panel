@@ -75,7 +75,7 @@ Donderdag zag het er aan het eind van de dag zo uit:
 ## week 2
 
 ### woensdag 11 maart
-wat heb ik vandaag gedaan? -> Vandaag heb ik de workshop container style queries gevolgd bij Sanne. Ik heb daarna mijn tweede thema toegevoegd (een klaver koning in plaats van de harten koningin) en heb mijn controls geschreven als container style queries. Ik heb mijn radio buttons voor gezichtsronding omgezet in een slider. Ik heb ook controls toegevoegd. Door checkboxes te combineren zijn de resultaten verschillend voor de twee karakters. Koningin: bloem kan ronddraaien en hart kan breken. Koning: zwaard kan zwaaien en klavertje kan dwarrelen. Beide karakters kunnen heen en weer bewegen met een control die voor beide geld. Vlak voor de checkout heb ik een achtergrond achter de kaarten toegevoegd met QUEEN QUEEN QUEEN of KING KING KING. Dit moet echter nog wel geperfectionaliseerd worden. Tijdens de checkout heb ik dit alles besproken met ... 
+wat heb ik vandaag gedaan? -> Vandaag heb ik de workshop container style queries gevolgd bij Sanne. Ik heb daarna mijn tweede thema toegevoegd (een klaver koning in plaats van de harten koningin) en heb mijn controls geschreven als container style queries. Ik heb mijn radio buttons voor gezichtsronding omgezet in een slider. Ik heb ook controls toegevoegd. Door checkboxes te combineren zijn de resultaten verschillend voor de twee karakters. Koningin: bloem kan ronddraaien en hart kan breken. Koning: zwaard kan zwaaien en klavertje kan dwarrelen. Beide karakters kunnen heen en weer bewegen met een control die voor beide geld. Vlak voor de checkout heb ik een achtergrond achter de kaarten toegevoegd met QUEEN QUEEN QUEEN of KING KING KING. Dit moet echter nog wel geperfectionaliseerd worden. Tijdens de checkout heb ik dit alles besproken met Alex. 
 
 hoelang heb ik daarover gedaan? -> Ik ben hier de hele dag mee bezig geweest.
 
@@ -85,13 +85,13 @@ wat ga ik de volgende keer doen? -> Morgen ga ik de achtergrond fixen, beginnen 
 
 
 ### donderdag 12 maart
-wat heb ik vandaag gedaan? -> 
+wat heb ik vandaag gedaan? -> Vandaag heb ik heb control panel (deels) gestyled en de positionering van de kaarten aangepast. Ik heb een slider toegevoegd die het nacht maakt. Daarnaast heb ik een checkbox toegevoegd met een animatie waar auto's over de middellijn van de kaart rijden. Als het nacht wordt door de slider krijgen de auto's geleidelijk steeds meer licht (koplampen). Smiddags had ik ook voortgangsgesprek bij Sanne.
 
-hoelang heb ik daarover gedaan? -> 
+hoelang heb ik daarover gedaan? -> Hieraan gewerkt tot half 4 ivm de weekly nerd.
 
-wat heb ik geleerd? -> 
+wat heb ik geleerd? -> Ik heb meer geleerd over container style queries omdat ik daar weer mee heb gewerkt vandaag.
 
-wat ga ik de volgende keer doen? -> 
+wat ga ik de volgende keer doen? -> Responsiveness fixen, typografie toevoegen, ont-"classen"
 
 
 ### weekvoortgang
