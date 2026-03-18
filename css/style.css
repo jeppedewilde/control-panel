@@ -9,8 +9,11 @@
     --kleding-kleur-donker: rgb(18, 67, 67);
     --vorm-kleur: red;
     --haar-kleur: #dea844;
+    --rand-kaart: #e4c197;
+    --midden-kaart: #f2dbbf;
     --gezicht: 0;
     --nacht: 0;
+    --misselijkmakend: 0;
 }
 
 /*******************/
@@ -30,8 +33,34 @@ main {
     position: relative;
     flex-wrap: wrap;
     left: 32px;
+    top: 60px;
 }
 
+/***********************/
+/** MARK: EASTER EGGS **/
+/***********************/
+#geheime-knop {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 1: barrel roll */
+html:has(#geheime-knop:checked) div[data-naam="kaart"] {
+    animation: barrel-roll 2s ease-in-out;
+}
+
+@keyframes barrel-roll {
+    0% {
+        transform: rotate(4deg); 
+    }
+    50% {
+        transform: rotate(364deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(4deg) scale(1); 
+    }
+}
 
 /***********************/
 /** MARK: ACHTERGROND TEKST **/
@@ -40,23 +69,61 @@ body {
     overflow: hidden; 
 }
 
-body::before {
-    content: "QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN";
+#achtergrond-tekst {
     position: fixed;
     top: -50%;
     left: -50%;
     width: 200%;
     height: 200%;
-    font-size: 120px;
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.2); 
     z-index: -1; 
     transform: rotate(-15deg); 
     pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; 
 }
 
-html:has([value="koning"]:checked) body::before {
-    content: "KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING";
+.rij::before {
+    content: "QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN QUEEN ";
+    font-family: Book Antiqua;
+    font-size: 120px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.2); 
+    white-space: nowrap; 
+    display: block;
+}
+
+html:has([value="koning"]:checked) .rij::before {
+    content: "KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING KING ";
+    /* font-family: Trebuchet MS; */
+    color: #535e75e7; 
+}
+
+.rij:nth-child(odd) {
+    animation: schuif-links var(--tekst-snelheid, 20s) linear infinite alternate;
+}
+
+.rij:nth-child(even) {
+    animation: schuif-rechts var(--tekst-snelheid, 20s) linear infinite alternate;
+}
+
+@keyframes schuif-links {
+    0% { translate: 0 0; }
+    100% { translate: -15% 0; }
+}
+
+@keyframes schuif-rechts {
+    0% { translate: -15% 0; }
+    100% { translate: 0 0; }
+}
+
+html:has([value="tekst-fx"]:checked) .rij::before {
+    animation: hobbel-tekst 1s ease-in-out infinite alternate;
+}
+
+@keyframes hobbel-tekst {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-30px); } 
 }
 
 /******************/
@@ -65,7 +132,7 @@ html:has([value="koning"]:checked) body::before {
 nav[data-naam="control-kaart"] {
     width: 400px;
     height: 600px;
-    background-color: #fcfcfc;
+    background-color: var(--rand-kaart);
     border: 12px solid black;
     border-radius: 20px;
     position: absolute;
@@ -95,7 +162,7 @@ nav:hover ~ div[data-naam="kaart"] {
 div[data-naam="control-canvas"] {
     width: 320px;
     height: 510px;
-    background-color: #f0f0f0;
+    background-color: var(--midden-kaart);
     border: 8px solid black;
     position: absolute;
     overflow: hidden;
@@ -108,6 +175,12 @@ div[data-naam="control-canvas"] {
 }
 
 /* styling controls */
+div[data-naam="controls-grid"] {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    place-items: center;
+}
+
 input[type="checkbox"] { 
     display: none; 
 }
@@ -120,38 +193,90 @@ label:has(input[type="checkbox"]) {
     height: 48px; 
     padding: 0; 
     margin: 0 0 10px 0;
-    background-color: #f0f0f0;
-    border: 2px solid #ccc;
+    
+    background-color: #ffffff; 
+    border: 3px solid black; 
     border-radius: 12px; 
     cursor: pointer;
     font-size: 24px;
     user-select: none; 
     
-    box-shadow: 0px 6px 0px #b3b3b3; 
+    box-shadow: 4px 6px 0px black; 
     
     transition: all 0.1s ease-out; 
 }
 
 label:has(input[type="checkbox"]):hover {
-    background-color: #e6e6e6;
-    transform: translateY(2px);
-    box-shadow: 0px 4px 0px #b3b3b3;
+    background-color: #f0f0f0;
+    transform: translate(2px, 2px); 
+    box-shadow: 2px 4px 0px black;
 }
 
 label:has(input[type="checkbox"]:checked) {
-    transform: translateY(6px); 
-    
-    box-shadow: 0px 0px 0px #b3b3b3; 
-    
+    transform: translate(4px, 6px); 
+    box-shadow: 0px 0px 0px black; 
     background-color: var(--jurk-kleur); 
-    border-color: var(--kleding-kleur-donker);
-    color: black;
+    border-color: black; 
 }
 
-div[data-naam="controls-grid"] {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    place-items: center;
+/* styling sliders */
+label:has(input[type="range"])[data-naam="geheime-slider-label"] {
+    display: none;
+}
+
+label:has(input[type="range"]) {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 80%; 
+    background: transparent; 
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+input[type="range"]:focus {
+    outline: none; 
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 14px;
+    background-color: #ffffff;
+    border: 3px solid black;
+    border-radius: 10px;
+    box-shadow: inset 0px 2px 0px rgba(0,0,0,0.1);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 28px;
+    width: 28px;
+    background-color: var(--jurk-kleur); 
+    border: 3px solid black;
+    border-radius: 50%;
+    margin-top: -10px; 
+    box-shadow: 2px 3px 0px black; 
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+input[type="range"]::-webkit-slider-thumb:active {
+    transform: scale(0.95) translateY(2px);
+    box-shadow: 0px 0px 0px black;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+    transform: scale(1.1);
+}
+input[type="range"]::-moz-range-thumb:active {
+    transform: scale(0.95) translateY(2px);
+    box-shadow: 0px 0px 0px black;
 }
 
 /****************/
@@ -161,7 +286,7 @@ div[data-naam="controls-grid"] {
 div[data-naam="kaart"] {
     width: 400px;
     height: 600px;
-    background-color: #fcfcfc;
+    background-color: var(--rand-kaart);
     border: 12px solid black;
     border-radius: 20px;
     position: absolute;
@@ -174,13 +299,14 @@ div[data-naam="kaart"] {
     transform-origin: bottom center;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
     transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* pointer-events: none; */
 }
 
 /* HET GRIJZE KADER */
 div[data-naam="canvas"] {
     width: 304px;
     height: 493px;
-    background-color: color-mix(in srgb, #1a1a3a calc(var(--nacht) * 1%), #d3d3d3);
+    background-color: color-mix(in srgb, #1a1a3a calc(var(--nacht) * 1%), var(--midden-kaart));
     transition: background-color 0.1s linear;
     border: 8px solid black;
     position: absolute;
@@ -230,6 +356,24 @@ div[data-naam="kroon-koning"] {
     margin: 0;
     transition: background-color 0.5s ease;
     clip-path: polygon(0% 0%, 10% 100%, 90% 100%, 100% 0%, 75% 40%, 50% 10%, 25% 40%);
+}
+
+div[data-naam="misselijk"] {
+    display: none;
+    position: absolute;
+    top: 14px; 
+    left: 20px;
+    font-size: 37px;
+    z-index: 100;
+}
+
+div[data-naam="misselijk2"] {
+    display: none;
+    position: absolute;
+    top: 14px; 
+    left: 18px; 
+    font-size: 40px;
+    z-index: 100;
 }
 
 /* HAAR LINKS */
@@ -344,8 +488,10 @@ div[data-naam="wenkbrauw1"] {
 }
 
 /* DE MOND */
-div[data-naam="mond"] {
-    display: block;
+input[type="checkbox"][data-naam="mond"] {
+    -webkit-appearance: none;
+    appearance: none;
+    display: block !important;
     width: 12px;
     height: 8px;
     background-color: red;
@@ -354,6 +500,16 @@ div[data-naam="mond"] {
     position: absolute;
     bottom: 17px;
     left: 27px;
+    cursor: pointer; 
+    z-index: 50; 
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+input[type="checkbox"][data-naam="mond"]:checked {
+    height: 18px; 
+    bottom: 12px; 
+    background-color: black;
+    border-radius: 40% 40% 60% 60%; 
 }
 
 /* BAARD */
@@ -686,6 +842,25 @@ div[data-naam="stippellijn"] {
     transform: translateY(-50%);
 }
 
+input[type="checkbox"][data-naam="streepje"] {
+    display: block;
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+    width: 8px;
+    height: 3px;
+    top: 8px;
+    left: 80px;
+    background-color: white;
+    cursor: pointer;
+    z-index: 100;
+}
+
+html:has(input[data-naam="streepje"]:checked) div[data-naam="canvas"] {
+    /* background: linear-gradient(90deg,rgba(0, 255, 221, 1) 0%, rgba(0, 255, 221, 1) 10%, rgba(255, 174, 0, 1) 10%, rgba(255, 174, 0, 1) 20%, rgba(0, 255, 221, 1) 20%, rgba(0, 255, 221, 1) 30%, rgba(255, 174, 0, 1) 30%, rgba(255, 174, 0, 1) 40%, rgba(0, 255, 221, 1) 40%, rgba(0, 255, 221, 1) 50%, rgba(255, 174, 0, 1) 50%, rgba(255, 174, 0, 1) 60%, rgba(0, 255, 221, 1) 60%, rgba(0, 255, 221, 1) 70%, rgba(255, 174, 0, 1) 70%, rgba(255, 174, 0, 1) 80%, rgba(0, 255, 221, 1) 80%, rgba(0, 255, 221, 1) 90%, rgba(255, 174, 0, 1) 90%, rgba(255, 174, 0, 1) 100%); */
+    background: linear-gradient(90deg,rgba(0, 255, 221, 1) 0%, rgba(0, 255, 221, 1) 10%, rgba(255, 204, 0, 1) 10%, rgba(255, 204, 0, 1) 20%, rgba(255, 0, 195, 1) 20%, rgba(255, 0, 195, 1) 30%, rgba(255, 204, 0, 1) 30%, rgba(255, 204, 0, 1) 40%, rgba(0, 255, 221, 1) 40%, rgba(0, 255, 221, 1) 50%, rgba(255, 0, 195, 1) 50%, rgba(255, 0, 195, 1) 60%, rgba(0, 255, 221, 1) 60%, rgba(0, 255, 221, 1) 70%, rgba(255, 204, 0, 1) 70%, rgba(255, 204, 0, 1) 80%, rgba(255, 0, 195, 1) 80%, rgba(255, 0, 195, 1) 90%, rgba(0, 255, 221, 1) 90%, rgba(0, 255, 221, 1) 100%);
+}
+
 /* autos */
 div[data-naam="auto-boven"],
 div[data-naam="auto-onder"] {
@@ -804,7 +979,7 @@ div[data-naam="tekening-schaal"] {
     }
 
     nav:hover {
-        translate: -3% -45%;
+        translate: -5% -51%;
         rotate: 5deg;
     }
 
@@ -1073,6 +1248,63 @@ html:has([value="autos"]:checked) {
 /* beide sliders maximaal */
 @container style(--opgeteld: calc(100 + 100)) {
     div[data-naam="kroon"] {
-        background-color: #00b700;
+        background-color: #00ff00;
+        animation: spin-kroon calc(2000ms - (var(--misselijkmakend) * 20ms)) linear infinite;
     }
 }
+
+@container style(--opgeteld: calc(100 + 100)) {
+    label:has(input[type="range"])[data-naam="geheime-slider-label"] {
+        display: inline-flex;
+    }
+}
+
+@container style(--misselijkmakend >= 50) {
+    div[data-naam="misselijk"] { 
+        display: block; 
+    }
+}
+
+@container style(--misselijkmakend: 100) {
+    div[data-naam="misselijk2"] { 
+        display: block; 
+    }
+
+    div[data-naam="kroon"] {
+        animation: none; 
+        translate: 56px 30px;
+        rotate: 66deg; 
+    }
+    
+    body,
+    nav[data-naam="control-kaart"],
+    div[data-naam="control-canvas"],
+    div[data-naam="kaart"],
+    div[data-naam="canvas"] {
+        background-color: #00b700 !important;
+        transition: background-color 0.2s ease;
+    }
+
+    .rij {
+        animation: none;
+    }
+}
+
+@keyframes spin-kroon {
+    0% {
+        rotate: 0deg;
+    }
+    100% {
+        rotate: 360deg;
+    }
+}
+
+@container style(--misselijkmakend: 10) { .rij { --tekst-snelheid: 18s; } }
+@container style(--misselijkmakend: 20) { .rij { --tekst-snelheid: 14s; } }
+@container style(--misselijkmakend: 30) { .rij { --tekst-snelheid: 9s; } }
+@container style(--misselijkmakend: 40) { .rij { --tekst-snelheid: 5.5s; } }
+@container style(--misselijkmakend: 50) { .rij { --tekst-snelheid: 3.8s; } }
+@container style(--misselijkmakend: 60) { .rij { --tekst-snelheid: 2.2s; } }
+@container style(--misselijkmakend: 70) { .rij { --tekst-snelheid: 1.2s; } }
+@container style(--misselijkmakend: 80) { .rij { --tekst-snelheid: 0.5s; } }
+@container style(--misselijkmakend: 90) { .rij { --tekst-snelheid: 0.15s; } }
