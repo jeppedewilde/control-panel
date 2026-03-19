@@ -11,25 +11,27 @@
 
 <body>
     <input type="checkbox" id="geheime-knop" accesskey="e">
-    <div id="achtergrond-tekst">
-        <div class="rij"></div>
-        <div class="rij"></div>
-        <div class="rij"></div>
-        <div class="rij"></div>
-        <div class="rij"></div>
-        <div class="rij"></div>
-        <div class="rij"></div>
-        <div class="rij"></div>
-        <div class="rij"></div>
-        <div class="rij"></div>
-        <div class="rij"></div>
-        <div class="rij"></div>
-        <div class="rij"></div>
-    </div>
+
+    <ul id="achtergrond-tekst">
+        <li class="rij"></li>
+        <li class="rij"></li>
+        <li class="rij"></li>
+        <li class="rij"></li>
+        <li class="rij"></li>
+        <li class="rij"></li>
+        <li class="rij"></li>
+        <li class="rij"></li>
+        <li class="rij"></li>
+        <li class="rij"></li>
+        <li class="rij"></li>
+        <li class="rij"></li>
+        <li class="rij"></li>
+    </ul>
+
     <main>
         <nav data-naam="control-kaart">
-            <div data-naam="control-canvas">
-                <div data-naam="controls-grid">
+            <section data-naam="control-canvas">
+                <form data-naam="controls-grid">
                     <label>
                         <input type="checkbox" value="kroon"> 👑
                     </label>
@@ -48,196 +50,205 @@
                     <label>
                         <input type="checkbox" value="autos"> 🚙
                     </label>
-                    <label>
-                        <input type="checkbox" value="tekst-fx"> ?
-                    </label>
-                </div>
-                <label>Gezicht<input type="range" value="0" min="0" max="100" step="50" list="gezicht" name="gezicht"></label>
+                </form>
+
+                <label>Gezicht<input type="range" value="0" min="0" max="100" step="50" list="gezicht"
+                        name="gezicht"></label>
                 <datalist id="gezicht">
                     <option value="0">0</option>
                     <option value="50">50</option>
                     <option value="100">100</option>
                 </datalist>
+
                 <label>Nacht<input type="range" value="0" min="0" max="100" list="nacht" name="nacht"></label>
                 <datalist id="nacht">
                     <option value="0">Dag</option>
                     <option value="100">Nacht</option>
                 </datalist>
-                <label data-naam="geheime-slider-label">Misselijk<input type="range" value="0" min="0" max="100" step="10" list="misselijkmakend" name="misselijkmakend"></label>
+
+                <label data-naam="geheime-slider-label">Misselijk<input type="range" value="0" min="0" max="100"
+                        step="10" list="misselijkmakend" name="misselijkmakend"></label>
                 <datalist id="misselijkmakend">
                     <option value="0">0</option>
                     <option value="10">10</option>
                     <option value="20">20</option>
-                    <option value="30">30</option>
-                    <option value="40">40</option>
                     <option value="50">50</option>
-                    <option value="60">60</option>
-                    <option value="70">70</option>
-                    <option value="80">80</option>
-                    <option value="90">90</option>
                     <option value="100">100</option>
                 </datalist>
-            </div>
+            </section>
         </nav>
 
-        <div data-naam="kaart">
-            <div data-naam="canvas">
+        <article data-naam="kaart">
+            <section data-naam="canvas">
 
-                <div data-naam="helft-boven">
-                    <div data-naam="tekening-schaal">
-                        <div data-naam="wrapper-hart">
-                            <div data-naam="icoon-groot"></div>
-                        </div>
-                        <div data-naam="karakter">
-                            <div data-naam="kroon">
-                                <div data-naam="misselijk">🤢</div>
-                                <div data-naam="misselijk2">🤮</div>
-                            </div>
-                            <div data-naam="kroon-koning">
-                                <div data-naam="misselijk">🤢</div>
-                                <div data-naam="misselijk2">🤮</div>
-                            </div>
-                            <div data-naam="haar-links"></div>
-                            <div data-naam="haar-koning"></div>
-                            <div data-naam="hoofd">
-                                <div data-naam="oog"></div>
-                                <div data-naam="wimper1"></div>
-                                <div data-naam="wimper2"></div>
-                                <div data-naam="wimper3"></div>
-                                <div data-naam="wimper4"></div>
-                                <div data-naam="wenkbrauw1"></div>
-                                <div data-naam="baard"></div>
+                <section data-naam="helft-boven">
+                    <figure data-naam="tekening-schaal">
+
+                        <aside data-naam="wrapper-hart">
+                            <b data-naam="icoon-groot"></b>
+                        </aside>
+
+                        <article data-naam="karakter">
+                            <header data-naam="kroon">
+                                <span data-naam="misselijk">🤢</span>
+                                <span data-naam="misselijk2">🤮</span>
+                            </header>
+                            <header data-naam="kroon-koning">
+                                <span data-naam="misselijk">🤢</span>
+                                <span data-naam="misselijk2">🤮</span>
+                            </header>
+
+                            <aside data-naam="haar-links"></aside>
+                            <aside data-naam="haar-koning"></aside>
+
+                            <ul data-naam="hoofd">
+                                <li data-naam="oog"></li>
+                                <li data-naam="wimper1"></li>
+                                <li data-naam="wimper2"></li>
+                                <li data-naam="wimper3"></li>
+                                <li data-naam="wimper4"></li>
+                                <li data-naam="wenkbrauw1"></li>
+                                <li data-naam="baard"></li>
                                 <input type="checkbox" data-naam="mond">
-                                <!-- <div data-naam="mond"></div> -->
-                            </div>
-                            <div data-naam="nek"></div>
-                            <div data-naam="wrapper-jurk">
-                                <div data-naam="jurk"></div>
-                                <div data-naam="mantel"></div>
-                            </div>
-                            <div data-naam="bovenarm-links">
-                                <div data-naam="onderarm-links">
-                                </div>
-                            </div>
-                            <div data-naam="bovenarm-links-koning">
-                                <div data-naam="onderarm-links-koning">
-                                </div>
-                            </div>
-                            <div data-naam="bovenarm-rechts">
-                                <div data-naam="onderarm-rechts">
-                                    <div data-naam="bloem">
-                                        <div data-naam="bloemsteel">
-                                            <div data-naam="bloem-bovenkant">
-                                                <div data-naam="bloemblaadjes-groep">
-                                                    <div data-naam="bloemblaadje1"></div>
-                                                    <div data-naam="bloemblaadje2"></div>
-                                                    <div data-naam="bloemblaadje3"></div>
-                                                    <div data-naam="bloemblaadje4"></div>
-                                                    <div data-naam="bloemblaadje5"></div>
-                                                    <div data-naam="bloemblaadje6"></div>
-                                                </div>
-                                                <div data-naam="bloemhart"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div data-naam="bovenarm-rechts-koning">
-                                <div data-naam="onderarm-rechts-koning">
-                                    <div data-naam="zwaard">
-                                        <div data-naam="zwaard-kling"></div>
-                                        <div data-naam="zwaard-stootplaat"></div>
-                                        <div data-naam="zwaard-handvat"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            </ul>
 
-                <div data-naam="middellijn">
-                    <div data-naam="stippellijn"></div>
+                            <s data-naam="nek"></s>
+
+                            <section data-naam="wrapper-jurk">
+                                <figure data-naam="jurk"></figure>
+                                <figure data-naam="mantel"></figure>
+                            </section>
+
+                            <footer data-naam="bovenarm-links">
+                                <b data-naam="onderarm-links"></b>
+                            </footer>
+
+                            <footer data-naam="bovenarm-links-koning">
+                                <b data-naam="onderarm-links-koning"></b>
+                            </footer>
+
+                            <footer data-naam="bovenarm-rechts">
+                                <b data-naam="onderarm-rechts">
+                                    <i data-naam="bloem">
+                                        <figure data-naam="bloemsteel">
+                                            <ul data-naam="bloem-bovenkant">
+                                                <ol data-naam="bloemblaadjes-groep">
+                                                    <li data-naam="bloemblaadje1"></li>
+                                                    <li data-naam="bloemblaadje2"></li>
+                                                    <li data-naam="bloemblaadje3"></li>
+                                                    <li data-naam="bloemblaadje4"></li>
+                                                    <li data-naam="bloemblaadje5"></li>
+                                                    <li data-naam="bloemblaadje6"></li>
+                                                </ol>
+                                                <em data-naam="bloemhart"></em>
+                                            </ul>
+                                        </figure>
+                                    </i>
+                                </b>
+                            </footer>
+
+                            <footer data-naam="bovenarm-rechts-koning">
+                                <b data-naam="onderarm-rechts-koning">
+                                    <i data-naam="zwaard">
+                                        <s data-naam="zwaard-kling"></s>
+                                        <u data-naam="zwaard-stootplaat"></u>
+                                        <q data-naam="zwaard-handvat"></q>
+                                    </i>
+                                </b>
+                            </footer>
+                        </article>
+                    </figure>
+                </section>
+
+                <aside data-naam="middellijn">
+                    <s data-naam="stippellijn"></s>
                     <input type="checkbox" data-naam="streepje">
-                    <div data-naam="auto-boven">🚗</div>
-                    <div data-naam="auto-onder">🚙</div>
-                </div>
+                    <mark data-naam="auto-boven">🚗</mark>
+                    <mark data-naam="auto-onder">🚙</mark>
+                </aside>
 
-                <div data-naam="helft-onder">
-                    <div data-naam="tekening-schaal">
-                        <div data-naam="wrapper-hart">
-                            <div data-naam="icoon-groot"></div>
-                        </div>
-                        <div data-naam="karakter">
-                            <div data-naam="kroon">
-                                <div data-naam="misselijk">🤢</div>
-                                <div data-naam="misselijk2">🤮</div>
-                            </div>
-                            <div data-naam="kroon-koning">
-                                <div data-naam="misselijk">🤢</div>
-                                <div data-naam="misselijk2">🤮</div>
-                            </div>
-                            <div data-naam="haar-links"></div>
-                            <div data-naam="haar-koning"></div>
-                            <div data-naam="hoofd">
-                                <div data-naam="oog"></div>
-                                <div data-naam="wimper1"></div>
-                                <div data-naam="wimper2"></div>
-                                <div data-naam="wimper3"></div>
-                                <div data-naam="wimper4"></div>
-                                <div data-naam="wenkbrauw1"></div>
-                                <div data-naam="baard"></div>
+                <section data-naam="helft-onder">
+                    <figure data-naam="tekening-schaal">
+
+                        <aside data-naam="wrapper-hart">
+                            <b data-naam="icoon-groot"></b>
+                        </aside>
+
+                        <article data-naam="karakter">
+                            <header data-naam="kroon">
+                                <span data-naam="misselijk">🤢</span>
+                                <span data-naam="misselijk2">🤮</span>
+                            </header>
+                            <header data-naam="kroon-koning">
+                                <span data-naam="misselijk">🤢</span>
+                                <span data-naam="misselijk2">🤮</span>
+                            </header>
+
+                            <aside data-naam="haar-links"></aside>
+                            <aside data-naam="haar-koning"></aside>
+
+                            <ul data-naam="hoofd">
+                                <li data-naam="oog"></li>
+                                <li data-naam="wimper1"></li>
+                                <li data-naam="wimper2"></li>
+                                <li data-naam="wimper3"></li>
+                                <li data-naam="wimper4"></li>
+                                <li data-naam="wenkbrauw1"></li>
+                                <li data-naam="baard"></li>
                                 <input type="checkbox" data-naam="mond">
-                            </div>
-                            <div data-naam="nek"></div>
-                            <div data-naam="wrapper-jurk">
-                                <div data-naam="jurk"></div>
-                                <div data-naam="mantel"></div>
-                            </div>
-                            <div data-naam="bovenarm-links">
-                                <div data-naam="onderarm-links">
-                                </div>
-                            </div>
-                            <div data-naam="bovenarm-links-koning">
-                                <div data-naam="onderarm-links-koning">
-                                </div>
-                            </div>
-                            <div data-naam="bovenarm-rechts">
-                                <div data-naam="onderarm-rechts">
-                                    <div data-naam="bloem">
-                                        <div data-naam="bloemsteel">
-                                            <div data-naam="bloem-bovenkant">
-                                                <div data-naam="bloemblaadjes-groep">
-                                                    <div data-naam="bloemblaadje1"></div>
-                                                    <div data-naam="bloemblaadje2"></div>
-                                                    <div data-naam="bloemblaadje3"></div>
-                                                    <div data-naam="bloemblaadje4"></div>
-                                                    <div data-naam="bloemblaadje5"></div>
-                                                    <div data-naam="bloemblaadje6"></div>
-                                                </div>
-                                                <div data-naam="bloemhart"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div data-naam="bovenarm-rechts-koning">
-                                <div data-naam="onderarm-rechts-koning">
-                                    <div data-naam="zwaard">
-                                        <div data-naam="zwaard-kling"></div>
-                                        <div data-naam="zwaard-stootplaat"></div>
-                                        <div data-naam="zwaard-handvat"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            </ul>
 
-            </div>
-        </div>
+                            <s data-naam="nek"></s>
+
+                            <section data-naam="wrapper-jurk">
+                                <figure data-naam="jurk"></figure>
+                                <figure data-naam="mantel"></figure>
+                            </section>
+
+                            <footer data-naam="bovenarm-links">
+                                <b data-naam="onderarm-links"></b>
+                            </footer>
+
+                            <footer data-naam="bovenarm-links-koning">
+                                <b data-naam="onderarm-links-koning"></b>
+                            </footer>
+
+                            <footer data-naam="bovenarm-rechts">
+                                <b data-naam="onderarm-rechts">
+                                    <i data-naam="bloem">
+                                        <figure data-naam="bloemsteel">
+                                            <ul data-naam="bloem-bovenkant">
+                                                <ol data-naam="bloemblaadjes-groep">
+                                                    <li data-naam="bloemblaadje1"></li>
+                                                    <li data-naam="bloemblaadje2"></li>
+                                                    <li data-naam="bloemblaadje3"></li>
+                                                    <li data-naam="bloemblaadje4"></li>
+                                                    <li data-naam="bloemblaadje5"></li>
+                                                    <li data-naam="bloemblaadje6"></li>
+                                                </ol>
+                                                <em data-naam="bloemhart"></em>
+                                            </ul>
+                                        </figure>
+                                    </i>
+                                </b>
+                            </footer>
+
+                            <footer data-naam="bovenarm-rechts-koning">
+                                <b data-naam="onderarm-rechts-koning">
+                                    <i data-naam="zwaard">
+                                        <s data-naam="zwaard-kling"></s>
+                                        <u data-naam="zwaard-stootplaat"></u>
+                                        <q data-naam="zwaard-handvat"></q>
+                                    </i>
+                                </b>
+                            </footer>
+                        </article>
+                    </figure>
+                </section>
+
+            </section>
+        </article>
     </main>
 </body>
 
 </html>
-
-<div data-naam=""></div>
